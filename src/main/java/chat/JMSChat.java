@@ -25,12 +25,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -44,6 +46,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
@@ -107,6 +110,10 @@ public class JMSChat extends Application {
 								+ "-fx-height:200px;";
 	
 	String style_separator ="-fx-border-width:20px;";
+	
+	String style_conversations ="-fx-background-color:#444D42;"
+							   +"-fx-height:20px;"
+							   +"-fx-text-fill: #ffffff;";
 	
 	
 	
@@ -228,6 +235,103 @@ public class JMSChat extends Application {
 		TextField textFieldTo = new TextField("USER_");
 		textFieldTo.setStyle(style_inputs);
 		textFieldTo.setPrefWidth(300);
+		
+		
+		Rectangle rectangle = new Rectangle();
+		  rectangle.setX(20.0f); 
+	      rectangle.setY(75.0f); 
+	      rectangle.setWidth(200.0f); 
+		
+		GridPane root = new GridPane();
+		root.setPadding(new Insets(0));//grid padding
+	       root.setHgap(0);
+	       root.setVgap(0);
+	       root.setStyle("-fx-background-color:#444D42;");
+	       root.setMinHeight(800.0f);
+	       
+
+	       Label labelTitle = new Label("Enter your user name and password!");
+
+	       // Put on cell (0,0), span 2 column, 1 row.
+	       // first param : column, second param : line, third param : 
+	       
+	       //root.add(rectangle, 0, 0, 1, 1);
+
+	       Button Home1  = new Button("Conversation 1");
+	       Button Home2  = new Button("Conversation 2");
+	       Button Home3  = new Button("Conversation 3");
+	       Button Home4  = new Button("Conversation 4");
+	       
+	       Separator sep1 = new Separator();
+	       Separator sep2 = new Separator();
+	       Separator sep3 = new Separator();
+	       Separator sep4 = new Separator();
+	       
+	       Home1.setStyle(style_conversations);
+	       Home1.setMinHeight(60);
+	       
+	       Home2.setStyle(style_conversations);
+	       Home2.setMinHeight(60);
+	       
+	       Home3.setStyle(style_conversations);
+	       Home3.setMinHeight(60);
+	       
+	       Home4.setStyle(style_conversations);
+	       Home4.setMinHeight(60);
+	       
+	       sep1.setPrefWidth(200);
+		   sep2.setStyle(style_separator);
+		   sep3.setPrefWidth(200);
+		   sep4.setStyle(style_separator);
+	       
+	       Home1.setMinWidth(200.0f);
+	       Home2.setMinWidth(200.0f);
+	       Home3.setMinWidth(200.0f);
+	       Home4.setMinWidth(200.0f);
+	       
+	       Home1.setLayoutY(100.0f);
+	       
+//
+//	       Label labelPassword = new Label("Password");
+//
+//	       PasswordField fieldPassword = new PasswordField();
+//
+//	       Button loginButton = new Button("Login");
+//
+//	       GridPane.setHalignment(labelUserName, HPos.RIGHT);
+
+	       root.add(Home1, 0, 0,1,1);
+	       root.add(sep1, 0, 1,1,1);
+	       root.add(Home2, 0, 2,1,1);
+	       root.add(sep2, 0, 3,1,1);
+	       root.add(Home3, 0, 4,1,1);
+	       root.add(sep3, 0, 5,1,1);
+	       root.add(Home4, 0, 6,1,1);
+	       root.add(sep4, 0, 7,1,1);
+	      
+	       
+	       
+	       // Put on cell (0,1)
+//	       root.add(labelUserName, 0, 1);
+//
+//	       
+//	       GridPane.setHalignment(labelPassword, HPos.RIGHT);
+//	       root.add(labelPassword, 0, 2);
+
+	       // Horizontal alignment for User Name field.
+//	       GridPane.setHalignment(fieldUserName, HPos.LEFT);
+//	       root.add(fieldUserName, 1, 1);
+
+	       // Horizontal alignment for Password field.
+//	       GridPane.setHalignment(fieldPassword, HPos.LEFT);
+//	       root.add(fieldPassword, 1, 2);
+
+	       // Horizontal alignment for Login button.
+//	       GridPane.setHalignment(loginButton, HPos.RIGHT);
+//	       root.add(loginButton, 1, 3);
+	       
+	       hBox2.getChildren().add(root);
+	       
 		
 		Scene scene = new Scene(borderPane, 1000, 500);
 		//scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
